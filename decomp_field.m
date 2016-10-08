@@ -41,11 +41,12 @@ for j = j_min:j_max
     disp(['j = ', num2str(j)])
     index = j-j_min+1;
     disp('Working on B_r...')
-    f_B_r{index} = reshape(get_field(B, j, beta_B_r{j+1}, theta_vec, phi_vec, 1000), size(phi_mat));
+    % n_dist needs to be large to reduce the approximation error
+    f_B_r{index} = reshape(get_field(B, j, beta_B_r{j+1}, theta_vec, phi_vec, 10000), size(phi_mat));
     disp('Working on B_theta...')
-    f_B_theta{index} = reshape(get_field(B, j, beta_B_theta{j+1}, theta_vec, phi_vec, 1000), size(phi_mat));
+    f_B_theta{index} = reshape(get_field(B, j, beta_B_theta{j+1}, theta_vec, phi_vec, 10000), size(phi_mat));
     disp('Working on B_phi...')
-    f_B_phi{index} = reshape(get_field(B, j, beta_B_phi{j+1}, theta_vec, phi_vec, 1000), size(phi_mat));
+    f_B_phi{index} = reshape(get_field(B, j, beta_B_phi{j+1}, theta_vec, phi_vec, 10000), size(phi_mat));
 end
 
 filename = 'f_decomp.mat';
