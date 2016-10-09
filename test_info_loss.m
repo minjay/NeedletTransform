@@ -36,15 +36,18 @@ rho = (a+0)/a;
 
 figure
 plot_field_map(B_r_tot, 200)
+print('f_B_r_tot.eps', '-depsc')
 figure
 plot_field_map(B_r, 200)
 
 figure
 plot_field_map(B_theta_tot, 200)
+print('f_B_theta_tot.eps', '-depsc')
 figure
 plot_field_map(B_theta, 200)
 
 figure
 plot_field_map(B_phi_tot, 200)
+print('f_B_phi_tot.eps', '-depsc')
 figure
 plot_field_map(B_phi, 200)
