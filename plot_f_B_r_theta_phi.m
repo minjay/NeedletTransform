@@ -7,6 +7,7 @@ for i = 1:8
     if max_value<=200
         plot_field_map(f_B_r{i})
     else
+        % Truncate the value if it is larger than 200
         plot_field_map(f_B_r{i}, 200)
     end
     print(['f_B_r_', num2str(i), '.eps'], '-depsc')
@@ -17,6 +18,7 @@ for i = 1:8
     if max_value<=200
         plot_field_map(f_B_theta{i})
     else
+        % Truncate the value if it is larger than 200
         plot_field_map(f_B_theta{i}, 200)
     end
     print(['f_B_theta_', num2str(i), '.eps'], '-depsc')
@@ -27,6 +29,7 @@ for i = 1:8
     if max_value<=200
         plot_field_map(f_B_phi{i})
     else
+        % Truncate the value if it is larger than 200
         plot_field_map(f_B_phi{i}, 200)
     end
     print(['f_B_phi_', num2str(i), '.eps'], '-depsc')
