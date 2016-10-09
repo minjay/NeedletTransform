@@ -1,3 +1,5 @@
+clear
+
 load('f_decomp.mat')
 
 for i = 1:8
