@@ -1,5 +1,6 @@
-function plot_field_map(field)
+function plot_field_map(field, C_max)
 % function to plot fields
+% C_max is set as 200 in the original code
 
 B_ref =  makerefmat('RasterSize', size(field), ...
     'Latlim', [-90 90], 'Lonlim', [-180 180]);
@@ -7,7 +8,9 @@ B_ref =  makerefmat('RasterSize', size(field), ...
 load coast
 
 clf
-C_max = max(abs(field(:)));
+if nargin==1
+    C_max = max(abs(field(:)));
+end
 dC = 50;
 B_tmp = field;
 
@@ -49,7 +52,7 @@ map=colormap;
 
 axes('Position', [0.333 0.75 .333 .015], 'Box', 'off')
 image([1:length(map)], 'XData', [-C_max C_max]);
-set(gca,'XTick', [-C_max:dC:C_max], 'XtickLabel', [-C_max:dC:C_max], 'Xdir', 'Normal', 'FontWeight', 'normal', 'Xcolor', 'k', 'FontSize', 12, 'YTickLabel', {}, 'Ydir', 'Normal')
+set(gca,'XTick', [-C_max:dC:C_max], 'XtickLabel', [round(-C_max:dC:C_max, 2, 'significant')], 'Xdir', 'Normal', 'FontWeight', 'normal', 'Xcolor', 'k', 'FontSize', 8, 'YTickLabel', {}, 'Ydir', 'Normal')
 text(0.5, 2,' nT', 'Color', 'k', 'FontWeight','normal', 'FontSize', 12, 'Units', 'normalized', 'HorizontalAlignment', 'Center')
 
 end
