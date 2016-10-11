@@ -60,13 +60,14 @@ end
 suptitle('Histogram of needlet coefficients for B_r')
 
 % Plot Q-Q plots
-figure
+h = figure;
 for i = 1:8
     subplot(2, 4, i)
     qqplot(beta_B_r{i})
     title(['j = ', num2str(i-1)])
 end
 suptitle('Q-Q plots of needlet coefficients for B_r')
+set(h, 'Position', [0, 0, 700, 500]);
 
 %% Work on B_theta
 B_theta_transpose = B_theta';
@@ -87,13 +88,14 @@ end
 suptitle('Histogram of needlet coefficients for B_{\theta}')
 
 % Plot Q-Q plots
-figure
+h = figure;
 for i = 1:8
     subplot(2, 4, i)
     qqplot(beta_B_theta{i})
     title(['j = ', num2str(i-1)])
 end
 suptitle('Q-Q plots of needlet coefficients for B_{\theta}')
+set(h, 'Position', [0, 0, 700, 500]);
 
 %% Work on B_phi
 B_phi_transpose = B_phi';
@@ -114,13 +116,14 @@ end
 suptitle('Histogram of needlet coefficients for B_{\phi}')
 
 % Plot Q-Q plots
-figure
+h = figure;
 for i = 1:8
     subplot(2, 4, i)
     qqplot(beta_B_phi{i})
     title(['j = ', num2str(i-1)])
 end
 suptitle('Q-Q plots of needlet coefficients for B_{\phi}')
+set(h, 'Position', [0, 0, 700, 500]);
 
 %% Save needlet coefficients
 filename = 'beta_B.mat';
