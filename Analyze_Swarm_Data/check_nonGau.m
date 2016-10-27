@@ -45,15 +45,18 @@ resid_z = resid_z(index);
 
 %% Case 1: near the equator
 % specify the region of interest
-lon1 = 0;
-lat1 = 0;
-width = 5;
-height = 5;
-lon2 = lon1 + width;
-lat2 = lat1 + height;
+lon_c = 0;
+lat_c = 0;
+half_width = 2.5;
+half_height = 2.5;
+lon1 = lon_c - half_width;
+lon2 = lon_c + half_width;
+lat1 = lat_c - half_height;
+lat2 = lat_c + half_height;
 
 index = find((lon>=lon1) & (lon<=lon2) & (lat>=lat1) & (lat<=lat2));
 
+figure
 subplot(2, 2, 1)
 qqplot(resid_x(index))
 title('Residual of B_x')
@@ -63,18 +66,22 @@ title('Residual of B_y')
 subplot(2, 2, 3)
 qqplot(resid_z(index))
 title('Residual of B_z')
+suptitle('Small region near lon 0, lat 0 degree')
 
-%% Case 2: in the polar region
+%% Case 2: in the north polar region
 % specify the region of interest
-lon1 = 0;
-lat1 = 80;
-width = 5;
-height = 5;
-lon2 = lon1 + width;
-lat2 = lat1 + height;
+lon_c = 0;
+lat_c = 80;
+half_width = 2.5;
+half_height = 2.5;
+lon1 = lon_c - half_width;
+lon2 = lon_c + half_width;
+lat1 = lat_c - half_height;
+lat2 = lat_c + half_height;
 
 index = find((lon>=lon1) & (lon<=lon2) & (lat>=lat1) & (lat<=lat2));
 
+figure
 subplot(2, 2, 1)
 qqplot(resid_x(index))
 title('Residual of B_x')
@@ -84,3 +91,29 @@ title('Residual of B_y')
 subplot(2, 2, 3)
 qqplot(resid_z(index))
 title('Residual of B_z')
+suptitle('Small region near lon 0, lat 80 degree')
+
+%% Case 3: in the south polar region
+% specify the region of interest
+lon_c = 0;
+lat_c = -80;
+half_width = 2.5;
+half_height = 2.5;
+lon1 = lon_c - half_width;
+lon2 = lon_c + half_width;
+lat1 = lat_c - half_height;
+lat2 = lat_c + half_height;
+
+index = find((lon>=lon1) & (lon<=lon2) & (lat>=lat1) & (lat<=lat2));
+
+figure
+subplot(2, 2, 1)
+qqplot(resid_x(index))
+title('Residual of B_x')
+subplot(2, 2, 2)
+qqplot(resid_y(index))
+title('Residual of B_y')
+subplot(2, 2, 3)
+qqplot(resid_z(index))
+title('Residual of B_z')
+suptitle('Small region near lon 0, lat -80 degree')
