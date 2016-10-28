@@ -126,3 +126,31 @@ qqplot(resid_z(index))
 title('Residual of B_z')
 axis square
 suptitle('Small region near lon 0, lat -80 degree')
+
+%% Case 4: in the north hemisphere
+% specify the region of interest
+lon_c = 0;
+lat_c = 30;
+half_width = 2.5;
+half_height = 2.5;
+lon1 = lon_c - half_width;
+lon2 = lon_c + half_width;
+lat1 = lat_c - half_height;
+lat2 = lat_c + half_height;
+
+index = find((lon>=lon1) & (lon<=lon2) & (lat>=lat1) & (lat<=lat2));
+
+figure
+subplot(1, 3, 1)
+qqplot(resid_x(index))
+title('Residual of B_x')
+axis square
+subplot(1, 3, 2)
+qqplot(resid_y(index))
+title('Residual of B_y')
+axis square
+subplot(1, 3, 3)
+qqplot(resid_z(index))
+title('Residual of B_z')
+axis square
+suptitle('Small region near lon 0, lat 30 degree')
