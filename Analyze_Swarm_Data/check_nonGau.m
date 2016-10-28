@@ -57,15 +57,18 @@ lat2 = lat_c + half_height;
 index = find((lon>=lon1) & (lon<=lon2) & (lat>=lat1) & (lat<=lat2));
 
 figure
-subplot(2, 2, 1)
+subplot(1, 3, 1)
 qqplot(resid_x(index))
 title('Residual of B_x')
-subplot(2, 2, 2)
+axis square
+subplot(1, 3, 2)
 qqplot(resid_y(index))
 title('Residual of B_y')
-subplot(2, 2, 3)
+axis square
+subplot(1, 3, 3)
 qqplot(resid_z(index))
 title('Residual of B_z')
+axis square
 suptitle('Small region near lon 0, lat 0 degree')
 
 %% Case 2: in the north polar region
@@ -82,15 +85,18 @@ lat2 = lat_c + half_height;
 index = find((lon>=lon1) & (lon<=lon2) & (lat>=lat1) & (lat<=lat2));
 
 figure
-subplot(2, 2, 1)
+subplot(1, 3, 1)
 qqplot(resid_x(index))
 title('Residual of B_x')
-subplot(2, 2, 2)
+axis square
+subplot(1, 3, 2)
 qqplot(resid_y(index))
 title('Residual of B_y')
-subplot(2, 2, 3)
+axis square
+subplot(1, 3, 3)
 qqplot(resid_z(index))
 title('Residual of B_z')
+axis square
 suptitle('Small region near lon 0, lat 80 degree')
 
 %% Case 3: in the south polar region
@@ -107,13 +113,16 @@ lat2 = lat_c + half_height;
 index = find((lon>=lon1) & (lon<=lon2) & (lat>=lat1) & (lat<=lat2));
 
 figure
-subplot(2, 2, 1)
+subplot(1, 3, 1)
 qqplot(resid_x(index))
 title('Residual of B_x')
-subplot(2, 2, 2)
+axis square
+subplot(1, 3, 2)
 qqplot(resid_y(index))
 title('Residual of B_y')
-subplot(2, 2, 3)
+axis square
+subplot(1, 3, 3)
 qqplot(resid_z(index))
 title('Residual of B_z')
+axis square
 suptitle('Small region near lon 0, lat -80 degree')
