@@ -97,7 +97,6 @@ subplot(1, 3, 3)
 qqplot(resid_z(index))
 title('Residual of B_z')
 axis square
-suptitle('Small region near lon 0, lat 80 degree')
 
 %% Case 3: in the south polar region
 % specify the region of interest
