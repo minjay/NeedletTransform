@@ -1,6 +1,6 @@
 clear
 
-subplot = @(m,n,p) subtightplot (m, n, p, [0.02 0.04], [0.01 0.05], [0.04 0.02]);
+subplot = @(m,n,p) subtightplot (m, n, p, [0.02 0.04], [0.01 0.05], [0.04 0.2]);
 
 res = 1e3;
 
@@ -16,18 +16,21 @@ phi_vec = phi_mat(:);
 % when m=0, SH is real
 for l = 1:6
     SH = spharmonic_eval(l, 0, theta_vec, phi_vec);
+    cmax = max(abs(SH));
+    SH = SH/cmax;
     f = reshape(SH, res/2, res);
 
     subplot(2, 3, l);
-    h = surf(X, Y, Z, f);
+    surf(X, Y, Z, f)
     axis equal
     axis tight
     axis off
     shading flat
     view([0 15]);
     colormap(redblue)
-    cmax = max(abs(SH));
-    caxis([-cmax cmax])
+    caxis([-1 1])
     title(['l = ', num2str(l), ', m = 0'])
     set(gca, 'FontSize', 12)
 end
+h = colorbar;
+set(h, 'Position', [.85 0.1 .05 .75]);
