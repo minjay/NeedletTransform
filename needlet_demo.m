@@ -29,6 +29,7 @@ for j = 1:6
     axis tight
     axis off
     shading flat
+    colormap(jet)
     title(['j = ', num2str(j)])
     set(gca, 'FontSize', 12)
 end
