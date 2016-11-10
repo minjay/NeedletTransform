@@ -11,20 +11,23 @@ theta_vec = theta_mat(:);
 phi_vec = phi_mat(:);
 
 [L, T] = meshgrid(phi-pi, pi/2-theta);
-[HX, HY] = sph2hammer(L, T);
+[X, Y, Z] = sph2cart(L, T, 1);
 
 % when m=0, SH is real
 for l = 1:6
-    Y = spharmonic_eval(l, 0, theta_vec, phi_vec);
-    f = reshape(Y, res/2, res);
+    SH = spharmonic_eval(l, 0, theta_vec, phi_vec);
+    f = reshape(SH, res/2, res);
 
     subplot(2, 3, l);
-    pcolor(HX, HY, f);
+    h = surf(X, Y, Z, f);
     axis equal
     axis tight
     axis off
     shading flat
-    colorbar('southoutside')
+    view([0 15]);
+    colormap(redblue)
+    cmax = max(abs(SH));
+    caxis([-cmax cmax])
     title(['l = ', num2str(l), ', m = 0'])
     set(gca, 'FontSize', 12)
 end
