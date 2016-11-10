@@ -12,22 +12,23 @@ theta_vec = theta_mat(:);
 phi_vec = phi_mat(:);
 
 [L, T] = meshgrid(phi-pi, pi/2-theta);
-[HX, HY] = sph2hammer(L, T);
+[X, Y, Z] = sph2cart(L, T, 1);
+
+theta_xi = pi/10;
+phi_xi = pi/2+pi/10;
 
 for j = 1:6
-    Nside = get_Nside(B, j);
-    k = 12*Nside^2/2;
-    [dist, psi] = get_psi(B, j, k, theta_vec, phi_vec);
+    [dist, psi] = get_psi_loc(B, j, theta_xi, phi_xi, theta_vec, phi_vec);
 
     f = reshape(psi, res/2, res);
 
     subplot(2, 3, j);
-    pcolor(HX, HY, f);
+    h = surf(X, Y, Z, f);
+    view(0, 90)
     axis equal
     axis tight
     axis off
     shading flat
-    colorbar('southoutside')
     title(['j = ', num2str(j)])
     set(gca, 'FontSize', 12)
 end
