@@ -14,7 +14,7 @@ phi_vec = phi_mat(:);
 [L, T] = meshgrid(phi-pi, pi/2-theta);
 [X, Y, Z] = sph2cart(L, T, 1);
 
-theta_xi = pi/10;
+theta_xi = pi/2;
 phi_xi = pi/2+pi/10;
 
 for j = 1:6
@@ -24,12 +24,12 @@ for j = 1:6
 
     subplot(2, 3, j);
     h = surf(X, Y, Z, f);
-    view(0, 90)
+    view(0, 15)
     axis equal
     axis tight
     axis off
     shading flat
-    colormap(jet)
+    view([0 15]);
     title(['j = ', num2str(j)])
     set(gca, 'FontSize', 12)
 end
